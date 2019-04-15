@@ -7,8 +7,8 @@ def terms(p, x):
     for t in Poly(p, x).all_terms():
         yield t[0][0], t[1]
 
-# If $sum_{n\ge 0}n^d z^n=\frac{Q_d(z)}{{(1-z)}^{d+1}}$
-# => $Q_d(z)={(1-z)}^{d+1}\cdot sum_{n\ge 0}n^d z^n$
+# If $\sum_{n\ge 0}n^d z^n=\frac{Q_d(z)}{{(1-z)}^{d+1}}$
+# => $Q_d(z)={(1-z)}^{d+1}\cdot\sum_{n\ge 0}n^d z^n$
 #
 # @param z Value to evaluate $Q_d(z)$ at.
 # @param d Degree.
