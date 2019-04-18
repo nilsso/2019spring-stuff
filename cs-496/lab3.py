@@ -28,12 +28,22 @@
 # this pass ladder in terms of total popularity but also in which classes died
 # less-often.
 
+from sys import exit
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 from copy import copy
 
-data = pd.read_csv('./poe_stats.csv')
+try:
+    with open('./poe_stats.csv') as f:
+        data = pd.read_csv(f)
+except:
+    print('''\
+Data set not found.
+Download at https://www.kaggle.com/gagazet/path-of-exile-league-statistic\
+''')
+    exit()
+
 
 ladder_query = 'SSF Harbinger HC'
 ladder_data = data[data['ladder'] == ladder_query]
@@ -58,8 +68,8 @@ for i, c in enumerate(classes):
     print(f'{c} Total:{count} Dead:{dead} Not dead:{notdead}')
 
 ind = np.arange(len(classes))
-p1 = plt.bar(ind, class_counts, label='Total')
-p2 = plt.bar(ind, class_dead_counts, label='Count dead')
+p1 = plt.bar(ind, class_counts, label='Not dead')
+p2 = plt.bar(ind, class_dead_counts, label='Dead')
 
 plt.title('''\
 Number of dead versus not-dead characters per class
@@ -70,4 +80,3 @@ plt.ylabel('Count')
 plt.xticks(ind, classes, rotation='vertical')
 plt.tight_layout()
 plt.show()
-
