@@ -66,7 +66,7 @@ Number of dead versus not-dead characters per class
 in Path of Exile SSF Harbinger HC ladder\
 ''')
 plt.legend(loc='best')
-plt.ylabel('Dead versus not dead')
+plt.ylabel('Count')
 plt.xticks(ind, classes, rotation='vertical')
 plt.tight_layout()
 plt.show()
